@@ -2,13 +2,23 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JASDOR | Kopi Fore Diskon 50%</title>
-    <script type="module" crossorigin src="/assets/fore.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/fore.css">
+    <link rel="stylesheet" href="./assets/style.css" />
   </head>
   <body>
+    <h1>Selamat datang di JASDOR!</h1>
     <div id="root"></div>
+
+    <script>
+      // Load file JSON
+      fetch('./assets/file.json')
+        .then(res => res.json())
+        .then(data => {
+          const root = document.getElementById('root');
+          root.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+        })
+        .catch(err => console.error('Gagal ambil data JSON:', err));
+    </script>
   </body>
 </html>
